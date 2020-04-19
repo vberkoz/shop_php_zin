@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Router
+ */
 class Router
 {
 
@@ -25,6 +28,9 @@ class Router
         return '';
     }
 
+    /**
+     * Calls action in controller
+     */
     public function run()
     {
         // Get request string
@@ -36,13 +42,18 @@ class Router
             // Compare $uriPattern and $uri
             if (preg_match("~$uriPattern~", $uri)) {
 
+                // Get internal route from an outer according to a rule
+                $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
+
                 // Determine which controller and method are processing the request
-                $segments = explode('/', $path);
+                $segments = explode('/', $internalRoute);
 
                 $controllerName = array_shift($segments) . 'Controller';
                 $controllerName = ucfirst($controllerName);
 
                 $actionName = 'action' . ucfirst(array_shift($segments));
+
+                $parameters = $segments;
 
                 // Include controller class file
                 $controllerFile = ROOT . '/controllers/' . $controllerName . '.php';
@@ -53,7 +64,9 @@ class Router
 
                 // Create object, call method
                 $controllerObject = new $controllerName;
-                $result = $controllerObject->$actionName();
+
+                $result = call_user_func_array(array($controllerObject, $actionName), $parameters);
+
                 if ($result != null) {
                     break;
                 }

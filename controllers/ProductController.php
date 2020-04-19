@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class ProductController
+ */
 class ProductController
 {
 
