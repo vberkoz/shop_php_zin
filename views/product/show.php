@@ -1,4 +1,5 @@
 <?php include_once ROOT . '/views/layouts/header.php'?>
+<?php include_once ROOT . '/views/layouts/catalog.php'?>
 
 <div style="margin-top: 16px">
     <div style="display: flex; margin-left: 50px;">

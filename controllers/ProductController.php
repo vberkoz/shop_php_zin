@@ -1,8 +1,5 @@
 <?php
 
-include_once ROOT . '/models/Category.php';
-include_once ROOT . '/models/Product.php';
-
 /**
  * Class ProductController
  */
@@ -11,13 +8,15 @@ class ProductController
     /**
      * Loads products list page
      * @param int $categoryId
+     * @param int $page
      * @return bool
      */
-    public function actionIndex($categoryId = 1) {
+    public function actionIndex($categoryId = 1, $page = 1) {
         $categories = Category::getCategories();
-        $products = Product::getProducts(10, $categoryId);
+        $products = Product::getProducts(4, $page, $categoryId);
+        $total = Product::getProductsNumber($categoryId);
+        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
         require_once ROOT . '/views/product/index.php';
-
         return true;
     }
 

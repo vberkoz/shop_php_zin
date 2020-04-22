@@ -5,17 +5,19 @@
  */
 class Product
 {
-    const SHOW_BY_DEFAULT = 10;
+    const SHOW_BY_DEFAULT = 4;
 
     /**
      * Gets products list by category
      * @param int $count
+     * @param int $page
      * @param int $categoryId
      * @return array
      */
-    public static function getProducts($count = self::SHOW_BY_DEFAULT, $categoryId = 1) {
+    public static function getProducts($count = self::SHOW_BY_DEFAULT, $page = 1, $categoryId = 1) {
         $count = intval($count);
         $categoryId = intval($categoryId);
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
         $categorySQL = '';
         if ($categoryId > 1) {
@@ -30,7 +32,8 @@ class Product
                                        FROM products
                                        WHERE visibility = 1 $categorySQL
                                        ORDER BY id DESC
-                                       LIMIT $count");
+                                       LIMIT $count
+                                       OFFSET $offset");
 
         $i = 0;
         while ($row = $result->fetch()) {
@@ -61,5 +64,29 @@ class Product
 
             return $result->fetch();
         }
+    }
+
+    /**
+     * Gets products number in category
+     * @param $categoryId
+     * @return mixed
+     */
+    public static function getProductsNumber($categoryId) {
+        $categoryId = intval($categoryId);
+
+        $db = Db::getConnection();
+
+        $categorySQL = '';
+        if ($categoryId > 1) {
+            $categorySQL = "AND category_id = $categoryId ";
+        }
+
+        $result = $db->query("SELECT count(id) AS count 
+                                       FROM products 
+                                       WHERE availability = 1 $categorySQL");
+
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+        $row = $result->fetch();
+        return $row['count'];
     }
 }

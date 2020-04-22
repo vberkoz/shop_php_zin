@@ -1,23 +1,17 @@
 <?php
 
-include_once ROOT . '/models/News.php';
-
 /**
  * Class NewsController
  */
 class NewsController
 {
-
     /**
      * Displays news list
      * @return bool
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $newsList = News::getNewsList();
-
         require_once ROOT . '/views/news/index.php';
-
         return true;
     }
 
@@ -26,14 +20,11 @@ class NewsController
      * @param $id
      * @return bool
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         if ($id) {
             $newsItem = News::getNewsItemByID($id);
-
             require_once ROOT . '/views/news/single.php';
         }
-
         return true;
     }
 

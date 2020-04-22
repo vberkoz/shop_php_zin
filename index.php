@@ -8,8 +8,7 @@ error_reporting(E_ALL);
 
 // 2. Include system files
 define('ROOT', dirname(__FILE__));
-require_once (ROOT . '/components/Router.php');
-include_once ROOT . '/components/Db.php';
+require_once (ROOT . '/components/Autoload.php');
 
 // 3. Call Router
 $router = new Router();

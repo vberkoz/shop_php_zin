@@ -1,7 +1,9 @@
 <?php include_once ROOT . '/views/layouts/header.php'?>
+<?php include_once ROOT . '/views/layouts/catalog.php'?>
 
 <div style="margin-top: 16px">
     <b style="margin-left: 10px;"><?php echo $currentCategoryName; ?></b>
+
     <div>
         <?php foreach ($products as $product): ?>
             <div style="padding: 20px 10px; width: 200px; display: inline-block;">
@@ -22,6 +24,8 @@
             </div>
         <?php endforeach; ?>
     </div>
+
+    <?php echo $pagination->get(); ?>
 </div>
 
 <?php include_once ROOT . '/views/layouts/footer.php'?>
