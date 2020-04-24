@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Class Product
- */
 class Product
 {
-    const SHOW_BY_DEFAULT = 4;
+    const SHOW_BY_DEFAULT = 8;
 
     /**
      * Gets products list by category
@@ -17,7 +14,7 @@ class Product
     public static function getProducts($count = self::SHOW_BY_DEFAULT, $page = 1, $categoryId = 1) {
         $count = intval($count);
         $categoryId = intval($categoryId);
-        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * $count;
 
         $categorySQL = '';
         if ($categoryId > 1) {
@@ -28,7 +25,7 @@ class Product
 
         $products = [];
 
-        $result = $db->query("SELECT id, title, price, image, is_new 
+        $result = $db->query("SELECT id, title, category_id, price, image, is_new 
                                        FROM products
                                        WHERE visibility = 1 $categorySQL
                                        ORDER BY id DESC
@@ -39,6 +36,7 @@ class Product
         while ($row = $result->fetch()) {
             $products[$i]['id'] = $row['id'];
             $products[$i]['title'] = $row['title'];
+            $products[$i]['category_id'] = $row['category_id'];
             $products[$i]['price'] = $row['price'];
             $products[$i]['image'] = $row['image'];
             $products[$i]['is_new'] = $row['is_new'];
@@ -59,11 +57,13 @@ class Product
         if ($productId) {
             $db = Db::getConnection();
 
-            $result = $db->query("SELECT * FROM products WHERE id=$productId");
+            $result = $db->query("SELECT * FROM products WHERE id = $productId");
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
             return $result->fetch();
         }
+
+        return false;
     }
 
     /**

@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class ProductController
- */
 class ProductController
 {
     /**
@@ -13,9 +10,10 @@ class ProductController
      */
     public function actionIndex($categoryId = 1, $page = 1) {
         $categories = Category::getCategories();
-        $products = Product::getProducts(4, $page, $categoryId);
+        $products = Product::getProducts(8, $page, $categoryId);
         $total = Product::getProductsNumber($categoryId);
-        $pagination = new Pagination($total, $page, Product::SHOW_BY_DEFAULT, 'page-');
+        $pagination = new Pagination($total, $page, 8, 'page-');
+
         require_once ROOT . '/views/product/index.php';
         return true;
     }
@@ -25,9 +23,10 @@ class ProductController
      * @param $productId
      * @return bool
      */
-    public function actionShow($productId) {
+    public function actionShow($productId, $categoryId) {
         $categories = Category::getCategories();
         $product = Product::getProduct($productId);
+
         require_once ROOT . '/views/product/show.php';
         return true;
     }

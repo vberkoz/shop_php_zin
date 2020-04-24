@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class NewsController
- */
 class NewsController
 {
     /**
@@ -27,5 +24,4 @@ class NewsController
         }
         return true;
     }
-
 }

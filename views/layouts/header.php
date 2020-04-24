@@ -1,16 +1,129 @@
 <html>
 <head>
     <title>Shop PHP Zin</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        h1, h2, h3 {
+            font-family: "Times New Roman", serif;
+            /*font-family: Verdana, sans-serif;*/
+            font-weight: bold;
+            color: #434343;
+        }
+
+        h1 {margin: 0;}
+
+        a, a:visited, a:active, p, span, input {
+            font-family: Verdana, sans-serif;
+            font-weight: lighter;
+            font-size: 13px;
+            color: #434343;
+            text-decoration: none;
+        }
+
+        form input {
+            padding: 5px;
+            margin: 5px 0;
+        }
+
+        .category-item a {
+            display: block;
+            padding: 5px;
+        }
+
+        a:hover {text-decoration: underline;}
+
+        a.active {font-weight: bold;}
+
+        .pagination {padding: 5px 0;}
+
+        .pagination a {padding: 5px 10px;}
+
+        .current-page {
+            background-color: #a5a5a5;
+            color: white;
+            font-weight: bold;
+        }
+
+        .pagination a:hover {
+            text-decoration: none;
+            background-color: #a5a5a5;
+            color: white;
+        }
+
+        p {
+            font-size: 13px;
+            line-height: 1.6em;
+        }
+
+        ul {padding: 0;}
+
+        .wrapper {
+            min-height: 100%;
+            margin-bottom: -100px;
+        }
+
+        .container {
+            max-width: 1190px;
+            margin: auto;
+            padding: 40px 0;
+        }
+        
+        .menu {
+            display: flex;
+            list-style-type: none;
+        }
+        
+        .menu li {padding-right: 20px;}
+
+        .product-card {
+            display: inline-block;
+            padding: 0 10px 40px;
+            width: 212px;
+        }
+
+        .product-card span {
+            position: absolute;
+            font-weight: bold;
+            padding: 3px 5px;
+            color: red;
+        }
+
+        .product-card a img {
+            max-height: 310px;
+            max-width: 230px;
+        }
+
+        .product-card a p {height: 36px;}
+    </style>
 </head>
 <body>
-<h1 style="padding: 40px 40px 0 40px;">Shop PHP Zin</h1>
+    <div class="wrapper">
+        <div class="container">
+            <h1>Shop PHP Zin</h1>
 
-<ul style="display: flex; list-style-type: none;">
-    <li style="padding-right: 10px;"><a href="/">Home</a></li>
-    <li style="padding-right: 10px;"><a href="/products">Shop</a></li>
-    <li style="padding-right: 10px;"><a href="/blog">Blog</a></li>
-    <li style="padding-right: 10px;"><a href="/about">About Us</a></li>
-    <li style="padding-right: 10px;"><a href="/contacts">Contacts</a></li>
-</ul>
+            <div style="display: flex; justify-content: space-between;">
+                <ul class="menu">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/category/1">Shop</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contacts">Contacts</a></li>
+                </ul>
 
-<div style="display: flex; padding-right: 40px;">
+                <ul class="menu">
+                    <li><a href="/bag">View Bag</a></li>
+                    <?php if (User::isGuest()): ?>
+                        <li><a href="/signin">Sign In</a></li>
+                        <li><a href="/signup">Sign Up</a></li>
+                    <?php else: ?>
+                        <li><a href="/cabinet">Cabinet</a></li>
+                        <li><a href="/signout">Sign Out</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+
+            <div style="display: flex; margin-top: 20px;">

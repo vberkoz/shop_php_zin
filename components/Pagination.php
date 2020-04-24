@@ -56,11 +56,8 @@ class Pagination
         $html = '<ul style="display: flex; list-style-type: none;">';
         for ($page = $limits[0]; $page <= $limits[1]; $page++) {
             if ($page == $this->current_page) {
-                $links .= '<li style="padding: 5px 0;">
-                                <a href="#" style="padding: 5px 10px; 
-                                                   background-color: blue; 
-                                                   color: white; 
-                                                   font-weight: bold;">' . $page . '</a>
+                $links .= '<li class="pagination">
+                                <a href="#" class="current-page">' . $page . '</a>
                            </li>';
             } else {
                 $links .= $this->generateHtml($page);
@@ -88,8 +85,8 @@ class Pagination
 
         $currentURI = rtrim($_SERVER['REQUEST_URI'], '/') . '/';
         $currentURI = preg_replace('~/page-[0-9]+~', '', $currentURI);
-        return '<li style="padding: 5px 0;">
-                    <a href="' . $currentURI . $this->index . $page . '" style="padding: 5px 10px;">' . $text . '</a>
+        return '<li class="pagination">
+                    <a href="' . $currentURI . $this->index . $page . '">' . $text . '</a>
                 </li>';
     }
 

@@ -1,8 +1,5 @@
 <?php
 
-/**
- * Class SiteController
- */
 class SiteController
 {
     /**
@@ -12,6 +9,7 @@ class SiteController
     public function actionIndex() {
         $categories = Category::getCategories();
         $products = Product::getProducts(4);
+
         require_once ROOT . '/views/site/index.php';
         return true;
     }
