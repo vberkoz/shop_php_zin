@@ -17,13 +17,22 @@
 
         h1 {margin: 0;}
 
-        a, a:visited, a:active, p, span, input, textarea {
+        a, a:visited, a:active, p, span, input, textarea, table {
             font-family: Verdana, sans-serif;
             font-weight: lighter;
             font-size: 13px;
             color: #434343;
             text-decoration: none;
         }
+
+        table {
+            width:100%;
+            overflow-wrap: break-word;
+        }
+
+        tr {height: 32px;}
+
+        th, td {padding: 5px 20px;}
 
         form input {
             padding: 5px;
@@ -92,7 +101,7 @@
 
         .product-card {
             display: inline-block;
-            padding: 0 10px 40px;
+            padding: 0 16px 40px;
             width: 212px;
         }
 
@@ -126,7 +135,7 @@
                 </ul>
 
                 <ul class="menu">
-                    <li><a href="/bag">View Bag</a></li>
+                    <li><a href="/bag">View Bag (<span id="bag-count"><?php echo Bag::countItems(); ?></span>)</a></li>
                     <?php if (User::isGuest()): ?>
                         <li><a href="/signin">Sign In</a></li>
                         <li><a href="/signup">Sign Up</a></li>

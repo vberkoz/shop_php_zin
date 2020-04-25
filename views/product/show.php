@@ -17,7 +17,8 @@
 
             <h3>£<?php echo $product['price']; ?></h3>
 
-            <a href="#">Add to bag</a>
+<!--            <a href="/bag/add/--><?php //echo $product['id']; ?><!--" class="add-to-bag">Add to bag</a>-->
+            <a href="#" class="add-to-bag" data-id="<?php echo $product['id']; ?>">Add to bag</a>
 
             <div style="margin-top: 30px;">
                 <h3>Product information</h3>

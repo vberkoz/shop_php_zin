@@ -40,13 +40,14 @@ class Product
             $products[$i]['price'] = $row['price'];
             $products[$i]['image'] = $row['image'];
             $products[$i]['is_new'] = $row['is_new'];
-            $i++;
+            $i ++;
         }
 
         return $products;
     }
 
     /**
+     * Gets products list by ids
      * Gets single product by id
      * @param $productId
      * @return mixed
@@ -64,6 +65,37 @@ class Product
         }
 
         return false;
+    }
+
+    /**
+     *
+     * @param $idsArray
+     * @return array
+     */
+    public static function getProductsByIds($idsArray) {
+        $db = Db::getConnection();
+
+        $idsString = implode(',', $idsArray);
+
+        $sql = "SELECT id, product_id, title, category_id, price 
+                FROM products 
+                WHERE availability = 1 AND id IN ($idsString)";
+
+        $result = $db->query($sql);
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        $i = 0;
+        $products = [];
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['product_id'] = $row['product_id'];
+            $products[$i]['title'] = $row['title'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['price'] = $row['price'];
+            $i ++;
+        }
+
+        return $products;
     }
 
     /**
