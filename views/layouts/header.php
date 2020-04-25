@@ -7,16 +7,17 @@
             margin: 0;
         }
 
+        body {overflow-y:scroll;}
+
         h1, h2, h3 {
             font-family: "Times New Roman", serif;
-            /*font-family: Verdana, sans-serif;*/
             font-weight: bold;
             color: #434343;
         }
 
         h1 {margin: 0;}
 
-        a, a:visited, a:active, p, span, input {
+        a, a:visited, a:active, p, span, input, textarea {
             font-family: Verdana, sans-serif;
             font-weight: lighter;
             font-size: 13px;
@@ -29,9 +30,19 @@
             margin: 5px 0;
         }
 
+        input[type=submit] {
+            padding: 5px 20px;
+        }
+
+        textarea {
+            width: 300px;
+            height: 200px;
+            padding: 5px;
+        }
+
         .category-item a {
             display: block;
-            padding: 5px;
+            padding: 5px 0;
         }
 
         a:hover {text-decoration: underline;}
@@ -111,7 +122,7 @@
                     <li><a href="/category/1">Shop</a></li>
                     <li><a href="/blog">Blog</a></li>
                     <li><a href="/about">About Us</a></li>
-                    <li><a href="/contacts">Contacts</a></li>
+                    <li><a href="/contact">Contact</a></li>
                 </ul>
 
                 <ul class="menu">

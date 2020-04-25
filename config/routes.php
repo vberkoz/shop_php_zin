@@ -16,5 +16,7 @@ return array(
     'cabinet/history' => 'cabinet/history',
     'cabinet' => 'cabinet/index',
 
+    'contact' => 'site/contact',
+
     '' => 'site/index',
 );

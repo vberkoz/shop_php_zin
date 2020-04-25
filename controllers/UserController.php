@@ -63,6 +63,9 @@ class UserController
         return true;
     }
 
+    /**
+     * Signs out current user
+     */
     public function actionSignout() {
         session_start();
         unset($_SESSION['user']);
