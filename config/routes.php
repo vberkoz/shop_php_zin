@@ -8,6 +8,8 @@ return array(
 
     'bag/add/([0-9]+)' => 'bag/add/$1',
     'bag/add-ajax/([0-9]+)' => 'bag/addajax/$1',
+    'bag/checkout' => 'bag/checkout',
+    'bag/remove/([0-9]+)' => 'bag/remove/$1',
     'bag' => 'bag/index',
 
     'news/([0-9]+)' => 'news/view/$1',

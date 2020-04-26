@@ -29,12 +29,9 @@ class SiteController
 
             $errors = false;
 
-            if (!User::checkEmail($userEmail)) {
-                $errors[] = 'Email is not valid';
-            }
+            if (!User::checkEmail($userEmail)) $errors[] = 'Email is not valid';
 
             if ($errors == false) {
-
                 $adminEmail = 'vberkoz@gmail.com';
                 $subject = 'Shop PHP Zin Message';
                 $message = "$userEmail $userText";

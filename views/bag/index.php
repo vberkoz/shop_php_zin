@@ -13,13 +13,18 @@
                     </a>
                 </td>
                 <td><?php echo $bag[$product['id']]; ?></td>
-                <td><?php echo $product['price']; ?></td>
-                <td><?php echo $product['price'] * $bag[$product['id']]; ?></td>
+                <td>£<?php echo $product['price']; ?></td>
+                <td>£<?php echo $product['price'] * $bag[$product['id']]; ?></td>
+                <td><a href="/bag/remove/<?php echo $product['id']; ?>">Remove</a></td>
             </tr>
             <?php endforeach; ?>
             <tr>
                 <td colspan="4"><b>Bag cost</b></td>
-                <td><b><?php echo $totalPrice; ?></b></td>
+                <td><b>£<?php echo $totalPrice; ?></b></td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+                <td><a href="/bag/checkout">Check Out</a></td>
             </tr>
         </table>
     <?php else: ?>

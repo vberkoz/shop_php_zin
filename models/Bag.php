@@ -25,6 +25,15 @@ class Bag
     }
 
     /**
+     * Removes product from bag by id
+     * @param $id
+     */
+    public static function removeProduct($id) {
+        $id = intval($id);
+        unset($_SESSION['products'][$id]);
+    }
+
+    /**
      * Calculates products number in bag
      * @return int
      */
@@ -66,5 +75,12 @@ class Bag
         }
 
         return $total;
+    }
+
+    /**
+     * Clears bag
+     */
+    public static function clear() {
+        if (isset($_SESSION['products'])) unset($_SESSION['products']);
     }
 }

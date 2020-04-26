@@ -47,6 +47,7 @@
             width: 300px;
             height: 200px;
             padding: 5px;
+            resize: none;
         }
 
         .category-item a {
