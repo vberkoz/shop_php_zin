@@ -47,6 +47,33 @@ class Product
     }
 
     /**
+     * Gets all recommended products
+     * @return array
+     */
+    public static function getFeaturedProducts() {$db = Db::getConnection();
+
+        $products = [];
+
+        $result = $db->query("SELECT id, title, category_id, price, image, is_new 
+                                       FROM products
+                                       WHERE visibility = 1 AND is_recomended = 1
+                                       ORDER BY id DESC");
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['title'] = $row['title'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['image'] = $row['image'];
+            $products[$i]['is_new'] = $row['is_new'];
+            $i ++;
+        }
+
+        return $products;
+    }
+
+    /**
      * Gets products list by ids
      * Gets single product by id
      * @param $productId

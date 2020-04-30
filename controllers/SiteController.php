@@ -9,6 +9,7 @@ class SiteController
     public function actionIndex() {
         $categories = Category::getCategories();
         $products = Product::getProducts(4);
+        $featuredItems = Product::getFeaturedProducts();
 
         require_once ROOT . '/views/site/index.php';
         return true;

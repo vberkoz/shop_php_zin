@@ -65,8 +65,8 @@ class Pagination
         }
 
         if (!is_null($links)) {
-            if ($this->current_page > 1) $links = $this->generateHtml(1, '&lt;') . $links;
-            if ($this->current_page < $this->amount) $links .= $this->generateHtml($this->amount, '&gt;');
+            if ($this->current_page > 1) $links = $this->generateHtml(1, '&#10094;') . $links;
+            if ($this->current_page < $this->amount) $links .= $this->generateHtml($this->amount, '&#10095;');
         }
 
         $html .= $links . '</ul>';
