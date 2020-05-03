@@ -55,7 +55,13 @@ class UserController
                 $errors[] = 'Wrong sign in data';
             } else {
                 User::auth($userId);
-                header("Location: /cabinet/");
+                $user = User::getUser($userId);
+
+                if ($user['role'] == 'admin') {
+                    header("Location: /admin/");
+                } else {
+                    header("Location: /cabinet/");
+                }
             }
         }
 

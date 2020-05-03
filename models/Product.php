@@ -25,7 +25,7 @@ class Product
 
         $products = [];
 
-        $result = $db->query("SELECT id, title, category_id, price, image, is_new 
+        $result = $db->query("SELECT id, title, category_id, product_id, price, image, is_new 
                                        FROM products
                                        WHERE visibility = 1 $categorySQL
                                        ORDER BY id DESC
@@ -37,6 +37,35 @@ class Product
             $products[$i]['id'] = $row['id'];
             $products[$i]['title'] = $row['title'];
             $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['product_id'] = $row['product_id'];
+            $products[$i]['price'] = $row['price'];
+            $products[$i]['image'] = $row['image'];
+            $products[$i]['is_new'] = $row['is_new'];
+            $i ++;
+        }
+
+        return $products;
+    }
+
+    /**
+     * Gets products list for admin panel
+     * @return array
+     */
+    public static function getProductsForAdmin() {
+        $db = Db::getConnection();
+
+        $products = [];
+
+        $result = $db->query("SELECT id, title, category_id, product_id, price, image, is_new 
+                                       FROM products
+                                       ORDER BY id DESC");
+
+        $i = 0;
+        while ($row = $result->fetch()) {
+            $products[$i]['id'] = $row['id'];
+            $products[$i]['title'] = $row['title'];
+            $products[$i]['category_id'] = $row['category_id'];
+            $products[$i]['product_id'] = $row['product_id'];
             $products[$i]['price'] = $row['price'];
             $products[$i]['image'] = $row['image'];
             $products[$i]['is_new'] = $row['is_new'];
@@ -147,5 +176,18 @@ class Product
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $row = $result->fetch();
         return $row['count'];
+    }
+
+    public static function deleteProduct($id) {
+        $id = intval($id);
+
+        $db = Db::getConnection();
+
+        $sql = 'DELETE FROM products WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $result->execute();
     }
 }

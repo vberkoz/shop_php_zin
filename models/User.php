@@ -11,12 +11,15 @@ class User
      */
     public static function register($username, $email, $secret) {
         $db = Db::getConnection();
-        $sql = 'INSERT INTO users (username, email, secret) VALUES (:username, :email, :secret)';
+        $sql = 'INSERT INTO users (username, email, secret, role) VALUES (:username, :email, :secret, :role)';
+
+        $role = 'client';
 
         $result = $db->prepare($sql);
         $result->bindParam(':username', $username, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':secret', $secret, PDO::PARAM_STR);
+        $result->bindParam(':role', $role, PDO::PARAM_STR);
 
         return $result->execute();
     }
