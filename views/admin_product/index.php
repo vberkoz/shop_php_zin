@@ -1,7 +1,8 @@
 <?php include_once ROOT . '/views/layouts/admin_header.php'?>
 
-    <div style="margin: 0 auto;">
+    <div>
         <h2>Products</h2>
+        <a href="/admin/product/create">Add Product</a>
         <?php if ($products): ?>
             <table>
                 <tr><th>Id</th><th>Article</th><th>Title</th><th>Price per unit</th><th></th></tr>

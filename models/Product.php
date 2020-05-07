@@ -85,7 +85,7 @@ class Product
 
         $result = $db->query("SELECT id, title, category_id, price, image, is_new 
                                        FROM products
-                                       WHERE visibility = 1 AND is_recomended = 1
+                                       WHERE visibility = 1 AND is_recommended = 1
                                        ORDER BY id DESC");
 
         $i = 0;
@@ -178,6 +178,78 @@ class Product
         return $row['count'];
     }
 
+    /**
+     * Creates product by parameters array
+     * @param $product
+     * @return int|string
+     */
+    public static function createProduct($product) {
+        $db = Db::getConnection();
+        $sql = 'INSERT INTO products (title, category_id, product_id, price, availability, brand, image, description, is_new, is_recommended, visibility)
+                VALUES (:title, :category_id, :product_id, :price, :availability, :brand, :image, :description, :is_new, :is_recommended, :visibility)';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':title', $product['title'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $product['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':product_id', $product['product_id'], PDO::PARAM_STR);
+        $result->bindParam(':price', $product['price'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $product['availability'], PDO::PARAM_INT);
+        $result->bindParam(':brand', $product['brand'], PDO::PARAM_STR);
+        $result->bindParam(':image', $product['image'], PDO::PARAM_STR);
+        $result->bindParam(':description', $product['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $product['is_new'], PDO::PARAM_INT);
+        $result->bindParam(':is_recommended', $product['is_recommended'], PDO::PARAM_INT);
+        $result->bindParam(':visibility', $product['visibility'], PDO::PARAM_INT);
+
+        if ($result->execute()) return $db->lastInsertId();
+        return 0;
+    }
+
+    /**
+     * Updates product by id and parameters array
+     * @param $id
+     * @param $product
+     * @return bool
+     */
+    public static function updateProduct($id, $product) {
+        $db = Db::getConnection();
+        $sql = 'UPDATE products 
+                SET 
+                  title = :title,
+                  category_id = :category_id,
+                  product_id = :product_id,
+                  price = :price,
+                  availability = :availability,
+                  brand = :brand,
+                  image = :image,
+                  description = :description,
+                  is_new = :is_new,
+                  is_recommended = :is_recommended,
+                  visibility = :visibility
+                WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':title', $product['title'], PDO::PARAM_STR);
+        $result->bindParam(':category_id', $product['category_id'], PDO::PARAM_INT);
+        $result->bindParam(':product_id', $product['product_id'], PDO::PARAM_STR);
+        $result->bindParam(':price', $product['price'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $product['availability'], PDO::PARAM_INT);
+        $result->bindParam(':brand', $product['brand'], PDO::PARAM_STR);
+        $result->bindParam(':image', $product['image'], PDO::PARAM_STR);
+        $result->bindParam(':description', $product['description'], PDO::PARAM_STR);
+        $result->bindParam(':is_new', $product['is_new'], PDO::PARAM_INT);
+        $result->bindParam(':is_recommended', $product['is_recommended'], PDO::PARAM_INT);
+        $result->bindParam(':visibility', $product['visibility'], PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    /**
+     * Deletes product by id
+     * @param $id
+     * @return bool
+     */
     public static function deleteProduct($id) {
         $id = intval($id);
 

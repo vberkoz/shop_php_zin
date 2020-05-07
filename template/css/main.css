@@ -13,7 +13,7 @@ h1, h2, h3 {
 
 h1 {margin: 0;}
 
-a, a:visited, a:active, p, span, input, textarea, table {
+a, a:visited, a:active, p, span, input, select, textarea, table {
     font-family: Verdana, sans-serif;
     font-weight: lighter;
     font-size: 13px;
@@ -30,9 +30,10 @@ tr {height: 32px;}
 
 th, td {padding: 5px 20px;}
 
-form input {
+form input, form select, form textarea {
     padding: 5px;
     margin: 5px 0;
+    width: 100%;
 }
 
 input[type=submit] {

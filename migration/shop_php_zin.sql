@@ -39,7 +39,7 @@ CREATE TABLE `categories` (
 -- Dumping data for table `categories`
 --
 
-INSERT INTO `categories` (`id`, `name`, `sort_order`, `status`) VALUES
+INSERT INTO `categories` (`id`, title, `sort_order`, visibility) VALUES
 (1, 'View All', 1, 1),
 (2, 'Coats & Jackets', 2, 1),
 (3, 'Hoodies', 3, 1),
@@ -108,7 +108,7 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `title`, `category_id`, `product_id`, `price`, `availability`, `brand`, `image`, `description`, `is_new`, `is_recomended`, `visibility`) VALUES
+INSERT INTO `products` (`id`, `title`, `category_id`, `product_id`, `price`, `availability`, `brand`, `image`, `description`, `is_new`, is_recommended, `visibility`) VALUES
 (1, 'Black Moleskin Jacket', 2, 'S2728047_C101', 35, 1, '', '1569852416.1447408-S2728047_C101_Alt1.jpg', 'Battle the cold with this moleskin jacket crafted from a cotton blend for warmth and durability. In a black shade it features four front pockets and zip fastening. Outer: 95% Cotton, 5% Polyester. Lining And Wadding: 100% Polyester. Care: Dry Clean.', 1, 0, 1),
 (2, 'Morley Brown Waxed Longline Parka Jacket', 2, 'S2760251_C177', 65, 1, 'Morley', '1574687339.6286528-S2760251_C177_Alt1.jpg', 'Add heritage style to your outerwear collection with this brown waxed parka jacket by Morley. Crafted in longline style with an adjustable hood and contrast grey lining, it features a buckle fastening to the neck and four front pockets. Throw on with a jeans and jumper for a casual cold-weather look. With excellence in performance and precision since 1795, the Morley brand has established expert quality in clothing. With the famous flying wheel logo as shorthand for the Morley identity, fill your wardrobe with their timeless designs and styles, which are created for real men. Shell: 66% Cotton, 34% Polyester. Lining: 65% Polyester, 35% Cotton.\r\nCare: Machine Washable.', 0, 0, 1),
 (3, 'US Athletic Scuba Hoodie', 3, 'S2761801_C228', 18, 1, 'US Athletic', '1576845971.9836304-S2761801_C228_Alt1.jpg', 'Add a versatile extra layer to your casual outfits with this scuba hoodie by US Athletic. Crafted from stretchy fabric in light grey marl, the sporty design comes with a kangaroo front pocket and an adjustable drawcord. It\'s finished with US Athletic branding printed to the chest. 53% Viscose, 43% Polyester, 4% Elastane. Care: Machine Washable.', 0, 0, 1),
