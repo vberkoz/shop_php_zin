@@ -9,7 +9,7 @@
             <div style="display: flex; justify-content: space-between;">
                 <ul class="menu">
                     <li><a href="/admin/product">Products</a></li>
-                    <li><a href="#">Categories</a></li>
+                    <li><a href="/admin/category">Categories</a></li>
                     <li><a href="#">Orders</a></li>
                 </ul>
 

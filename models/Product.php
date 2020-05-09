@@ -103,7 +103,6 @@ class Product
     }
 
     /**
-     * Gets products list by ids
      * Gets single product by id
      * @param $productId
      * @return mixed
@@ -206,6 +205,24 @@ class Product
     }
 
     /**
+     * Deletes product by id
+     * @param $id
+     * @return bool
+     */
+    public static function deleteProduct($id) {
+        $id = intval($id);
+
+        $db = Db::getConnection();
+
+        $sql = 'DELETE FROM products WHERE id = :id';
+
+        $result = $db->prepare($sql);
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+
+        return $result->execute();
+    }
+
+    /**
      * Updates product by id and parameters array
      * @param $id
      * @param $product
@@ -241,24 +258,6 @@ class Product
         $result->bindParam(':is_new', $product['is_new'], PDO::PARAM_INT);
         $result->bindParam(':is_recommended', $product['is_recommended'], PDO::PARAM_INT);
         $result->bindParam(':visibility', $product['visibility'], PDO::PARAM_INT);
-
-        return $result->execute();
-    }
-
-    /**
-     * Deletes product by id
-     * @param $id
-     * @return bool
-     */
-    public static function deleteProduct($id) {
-        $id = intval($id);
-
-        $db = Db::getConnection();
-
-        $sql = 'DELETE FROM products WHERE id = :id';
-
-        $result = $db->prepare($sql);
-        $result->bindParam(':id', $id, PDO::PARAM_INT);
 
         return $result->execute();
     }

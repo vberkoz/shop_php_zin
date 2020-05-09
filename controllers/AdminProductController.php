@@ -14,7 +14,7 @@ class AdminProductController extends AdminBase
     }
 
     /**
-     * Remove product confirm page
+     * Remove product
      * @param $id
      * @return bool
      */
@@ -29,7 +29,7 @@ class AdminProductController extends AdminBase
     }
 
     /**
-     * Create product page
+     * Create product
      * @return bool
      */
     public function actionCreate() {
@@ -78,7 +78,7 @@ class AdminProductController extends AdminBase
     }
 
     /**
-     * Update product page
+     * Update product
      * @param $id
      * @return bool
      */
