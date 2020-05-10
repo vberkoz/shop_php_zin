@@ -4,7 +4,7 @@
         <h2>Products</h2>
         <a href="/admin/product/create">Add Product</a>
         <?php if ($products): ?>
-            <table>
+            <table style="margin-top: 20px;">
                 <tr><th>Id</th><th>Article</th><th>Title</th><th>Price per unit</th><th></th></tr>
                 <?php foreach ($products as $product): ?>
                     <tr>

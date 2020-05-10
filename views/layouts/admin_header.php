@@ -10,7 +10,7 @@
                 <ul class="menu">
                     <li><a href="/admin/product">Products</a></li>
                     <li><a href="/admin/category">Categories</a></li>
-                    <li><a href="#">Orders</a></li>
+                    <li><a href="/admin/order">Orders</a></li>
                 </ul>
 
                 <ul class="menu">

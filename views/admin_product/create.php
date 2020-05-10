@@ -15,7 +15,7 @@
         <input type="text" name="title" placeholder="Title" value=""><br>
         <select name="category_id">
             <?php foreach ($categories as $category): ?>
-                <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                <option value="<?php echo $category['id']; ?>"><?php echo $category['title']; ?></option>
             <?php endforeach; ?>
         </select><br>
         <input type="text" name="product_id" placeholder="Product Id"><br>

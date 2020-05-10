@@ -17,7 +17,7 @@
             <?php foreach ($categories as $category): ?>
                 <option value="<?php echo $category['id']; ?>"
                         <?php if ($category['id'] == $product['category_id']) echo " selected='selected'"; ?>>
-                    <?php echo $category['name']; ?>
+                    <?php echo $category['title']; ?>
                 </option>
             <?php endforeach; ?>
         </select><br>

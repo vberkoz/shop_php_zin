@@ -36,7 +36,7 @@ return array(
     'admin/category' => 'adminCategory/index',
 
     'admin/order/create' => 'adminOrder/create',
-    'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
+    'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
     'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
     'admin/order' => 'adminOrder/index',
 
